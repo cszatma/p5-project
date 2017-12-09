@@ -16,7 +16,8 @@ class Color {
     }
 
     /** Returns a p5 color using the Color object's RGBA values */
-    getP5Color(): color {
+    getP5Color(): $FlowIgnore {
+        // $FlowIgnore
         return color(this.r, this.g, this.b, this.a);
     }
 
@@ -29,7 +30,7 @@ class Color {
     }
 
     /** Updates the object's RGBA values using a given p5 color */
-    updateFromP5Color(p5Color: color) {
+    updateFromP5Color(p5Color: $FlowIgnore) {
         this.r = p5Color._getRed();
         this.g = p5Color._getGreen();
         this.b = p5Color._getBlue();
@@ -53,12 +54,13 @@ class Color {
     }
 
     /** Returns a random p5 color */
-    static p5RandomColor(hasRandomAlpha: boolean): color {
+    static p5RandomColor(hasRandomAlpha: boolean): $FlowIgnore {
+        // $FlowIgnore
         return color(random(0, 255), random(0, 255), random(0, 255), hasRandomAlpha ? random(0, 255) : 255);
     }
 
     /** Returns a Color object from a given p5 color */
-    static fromP5Color(p5Color: color): Color {
+    static fromP5Color(p5Color: $FlowIgnore): Color {
         return new Color(p5Color._getRed(), p5Color._getGreen(), p5Color._getBlue(), p5Color._getAlpha());
     }
 
