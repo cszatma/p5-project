@@ -1,3 +1,5 @@
+// @flow
+
 import p5 from 'p5';
 import createSketch from './components/createSketch';
 import Color from './components/Color';
@@ -9,4 +11,3 @@ window.draw = function() {
     fill(c.getP5Color());
     ellipse(200, 200, 50, 50);
 };
-
