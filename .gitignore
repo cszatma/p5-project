@@ -57,7 +57,11 @@ typings/
 # dotenv environment variables file
 .env
 
+# Build created by webpack
 build
+
+# Lib directory used by babel when removing flow
+lib
 
 .idea
 
