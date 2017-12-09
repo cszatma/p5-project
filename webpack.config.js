@@ -6,15 +6,16 @@ const resolve = path.resolve,
 
 const rootDir = resolve(__dirname);
 const srcDir = join(rootDir, 'src');
+const libDir = join(rootDir, 'lib');
 const buildDir = join(rootDir, 'build');
 
 module.exports = {
-    entry: join(srcDir, 'index.js'),
+    entry: join(libDir, 'index.js'),
     module: {
         rules: [
             {
                 test: /\.js$/,
-                include: srcDir,
+                include: libDir,
                 exclude: /(node_modules|bower_components)/,
                 use: {
                     loader: 'babel-loader',
