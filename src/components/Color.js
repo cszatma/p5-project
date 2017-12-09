@@ -1,6 +1,6 @@
 // @flow
 
-import randomInt from './functions';
+import { randomInt } from './functions';
 
 class Color {
     r: number;
@@ -17,8 +17,7 @@ class Color {
 
     /** Returns a p5 color using the Color object's RGBA values */
     getP5Color(): $FlowIgnore {
-        // $FlowIgnore
-        return color(this.r, this.g, this.b, this.a);
+        return window.color(this.r, this.g, this.b, this.a);
     }
 
     /** Updates the object's RGBA values */
@@ -27,6 +26,14 @@ class Color {
         this.g = g;
         this.b = b;
         this.a = a;
+    }
+
+    /** Updates the object's RGBA values using a given Color object's RGBA values. */
+    updateFromColor(color: Color) {
+        this.r = color.r;
+        this.g = color.g;
+        this.b = color.b;
+        this.a = color.a;
     }
 
     /** Updates the object's RGBA values using a given p5 color */
@@ -38,7 +45,7 @@ class Color {
     }
 
     /** Updates the object's RBGA values using a given array */
-    updateFromArray(array: Array<number>) {
+    updateFromArray(array: number[]) {
         this.r = array[0];
         this.g = array[1];
         this.b = array[2];
@@ -48,6 +55,12 @@ class Color {
         }
     }
 
+    isEqual(color: Color): boolean {
+        return this.r === color.r && this.g === color.g && this.b === color.b && this.a === color.a;
+    }
+
+    /* Static Methods */
+
     /** Returns a Color object with random RGB values */
     static randomColor(hasRandomAlpha: boolean): Color {
         return new Color(randomInt(0, 256), randomInt(0, 256), randomInt(0, 256), hasRandomAlpha ? randomInt(0, 256) : 255);
@@ -55,8 +68,7 @@ class Color {
 
     /** Returns a random p5 color */
     static p5RandomColor(hasRandomAlpha: boolean): $FlowIgnore {
-        // $FlowIgnore
-        return color(random(0, 255), random(0, 255), random(0, 255), hasRandomAlpha ? random(0, 255) : 255);
+        return window.color(randomInt(0, 256), randomInt(0, 256), randomInt(0, 256), hasRandomAlpha ? randomInt(0, 256) : 255);
     }
 
     /** Returns a Color object from a given p5 color */
@@ -65,7 +77,7 @@ class Color {
     }
 
     /** Returns a Color object from a given array */
-    static fromArray(array: Array<number>): Color {
+    static fromArray(array: number[]): Color {
         return new Color(array[0], array[1], array[2], array[3] !== undefined ? array[3] : 255);
     }
 }

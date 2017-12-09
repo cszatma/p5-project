@@ -3,13 +3,17 @@
 import 'p5';
 import createSketch from './components/createSketch';
 import Color from './components/Color';
+import * as mouseMemory from './components/mouseMemory';
 
-createSketch(window, 500, 500, new Color(0, 100, 200));
+const backgroundColor = new Color(0, 100, 200);
+createSketch(500, 500, backgroundColor);
 
-window.draw = function() {
-    const c = new Color(100, 0, 0);
-    // $FlowIgnore
-    fill(c.getP5Color());
-    // $FlowIgnore
-    ellipse(200, 200, 50, 50);
+window.mouseClicked = () => {
+    mouseMemory.handleClick(window.mouseX, window.mouseY, backgroundColor.getP5Color());
+};
+
+window.draw = () => {
+    window.background(backgroundColor.getP5Color());
+    window.noStroke();
+    mouseMemory.drawCurrentMode();
 };
