@@ -1,7 +1,7 @@
 // @flow
 
 class Enum {
-    static create(cases: Array<string>) {
+    static create(cases: string[]) {
         return Object.freeze(Object.assign.apply({}, cases.map(c => ({ [c]: Symbol(c) }))));
     }
 }
