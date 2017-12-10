@@ -3,7 +3,10 @@
 import Enum from "./Enum";
 import Color from "./Color";
 import { isWithinRange } from "../global/functions";
-import { w } from "../global/constants";
+import { w, canvasSize, Direction } from "../global/constants";
+import ColorPicker from "./ColorPicker";
+import Point from "./Point";
+import Size from "./Size";
 
 const Mode = Enum.create(["normal", "selectColor"]);
 
@@ -13,7 +16,11 @@ let xPos = [];
 let yPos = [];
 const trailColor = new Color(0);
 let currentMode = Mode.normal;
-
+const colorPicker = new ColorPicker(
+    [new Color(255, 0, 0), new Color(250, 176, 5), new Color(50, 120, 255),
+        new Color(25, 275, 25), new Color(0), new Color(255)],
+    new Point(10, 10), new Size(45, 60), Direction.right
+);
 
 function saveLastPosition() {
     xPos[maxTrailSize - 1] = w.mouseX;
@@ -46,22 +53,11 @@ function handleClick(x: number, y: number, backgroundColor: Color = new Color(25
     }
 }
 
-function drawColorPicker() {
-    w.fill(255, 0, 0);
-    w.rect(4, 10, 44, 60);
-    w.fill(250, 176, 5);
-    w.rect(48, 10, 44, 60);
-    w.fill(50, 120, 255);
-    w.rect(92, 10, 44, 60);
-    w.fill(25, 275, 25);
-    w.rect(136, 10, 44, 60);
-    w.fill(0);
-    w.rect(180, 10, 44, 60);
-    w.fill(255);
-    w.rect(224, 10, 44, 60);
+function drawSelectColorMode() {
+    colorPicker.draw();
 
     w.fill(trailColor.getP5Color());
-    w.text("Current Color", 20, 480);
+    w.text("Current Color", 20, canvasSize.height - 20);
 }
 
 function createTrail() {
@@ -73,15 +69,17 @@ function createTrail() {
 
 function drawModeSelector() {
     w.fill(170, 150, 125);
-    w.rect(390, 460, 100, 30);
+    w.rect(canvasSize.width - 110, canvasSize.height - 40, 100, 30);
     w.fill(25, 150, 250);
     w.textSize(15);
-    w.text("Change Mode", 393, 480);
+    w.text("Change Mode", canvasSize.width - 107, canvasSize.height - 20);
 }
 
-function drawCurrentMode() {
+function drawCurrentMode(backgroundColor: Color) {
+    w.background(backgroundColor.getP5Color());
+    w.noStroke();
     drawModeSelector();
-    currentMode === Mode.normal ? createTrail() : drawColorPicker();
+    currentMode === Mode.normal ? createTrail() : drawSelectColorMode();
 }
 
 export { drawCurrentMode, handleClick };
