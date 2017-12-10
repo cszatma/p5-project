@@ -9,7 +9,7 @@ const backgroundColor = new Color(0, 100, 200);
 createSketch(500, 500, backgroundColor);
 
 window.mouseClicked = () => {
-    mouseMemory.handleClick(window.mouseX, window.mouseY, backgroundColor.getP5Color());
+    mouseMemory.handleClick(window.mouseX, window.mouseY, backgroundColor);
 };
 
 window.draw = () => {

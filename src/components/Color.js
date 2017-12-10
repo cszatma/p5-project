@@ -1,6 +1,6 @@
 // @flow
 
-import { randomInt } from './functions';
+import { randomInt } from '../global/functions';
 
 class Color {
     r: number;
