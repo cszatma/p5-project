@@ -1,7 +1,7 @@
 // @flow
 
-import 'p5/lib/addons/p5.dom';
-import Color from './Color';
+import "p5/lib/addons/p5.dom";
+import Color from "./Color";
 
 export default function createSketch(width: number = 500, height: number = 500, color: Color = new Color(255)) {
     window.setup = function() {

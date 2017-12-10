@@ -1,9 +1,9 @@
 // @flow
 
-import Enum from './Enum';
-import Color from './Color';
-import { isWithinRange } from '../global/functions';
-import { w } from '../global/constants';
+import Enum from "./Enum";
+import Color from "./Color";
+import { isWithinRange } from "../global/functions";
+import { w } from "../global/constants";
 
 const Mode = Enum.create(["normal", "selectColor"]);
 
