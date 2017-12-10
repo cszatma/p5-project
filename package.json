@@ -1,4 +1,6 @@
 {
+  "name": "p5-project",
+  "author": "Christopher Szatmary <cs@christopherszatmary.com> (http://christopherszatmary.com)",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
