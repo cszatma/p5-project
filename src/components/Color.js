@@ -52,6 +52,10 @@ class Color {
         return this.r === color.r && this.g === color.g && this.b === color.b && this.a === color.a;
     }
 
+    clone(): Color {
+        return new Color(this.r, this.g, this.b, this.a);
+    }
+
     /* Static Methods */
     static randomRGBAArray(hasRandomAlpha: boolean): number[] {
         return [randomInt(0, 256), randomInt(0, 256), randomInt(0, 256),
