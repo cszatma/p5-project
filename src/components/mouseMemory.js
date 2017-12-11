@@ -7,40 +7,20 @@ import { w, canvasSize, Direction } from "../global/constants";
 import ColorPicker from "./ColorPicker";
 import Point from "./Point";
 import Size from "./Size";
+import FadingTrail from "./FadingTrail";
 
 const Mode = Enum.create(["normal", "selectColor"]);
 
 // Define variables
-const maxTrailSize = 60;
-let xPos = [];
-let yPos = [];
-const trailColor = new Color(0);
 let currentMode = Mode.normal;
+const trail = new FadingTrail(60, new Color(0));
 const colorPicker = new ColorPicker(
     [new Color(255, 0, 0), new Color(250, 176, 5), new Color(50, 120, 255),
         new Color(25, 275, 25), new Color(0), new Color(255)],
     new Point(10, 10), new Size(45, 60), Direction.right
 );
 
-function saveLastPosition() {
-    xPos[maxTrailSize - 1] = w.mouseX;
-    yPos[maxTrailSize - 1] = w.mouseY;
-}
-
-function saveTrailPositions() {
-    for (let i = 1; i < maxTrailSize; i++) {
-        xPos[i - 1] = xPos[i];
-        yPos[i - 1] = yPos[i];
-    }
-}
-
-function drawTrail() {
-    for (let i = 0; i < maxTrailSize; i++) {
-        w.ellipse(xPos[i], yPos[i], i / 2, i / 2);
-    }
-}
-
-function handleClick(x: number, y: number, backgroundColor: Color = new Color(255)) {
+function handleClick(x: number, y: number, backgroundColor: Color) {
     if (isWithinRange(x, 390, 490) && isWithinRange(y, 460, 490)) {
         currentMode = currentMode === Mode.normal ? Mode.selectColor : Mode.normal;
     }
@@ -48,23 +28,15 @@ function handleClick(x: number, y: number, backgroundColor: Color = new Color(25
     if (currentMode === Mode.selectColor) {
         const selectedColor = Color.fromArray(w.get(x, y));
         if (!selectedColor.isEqual(backgroundColor)) {
-            trailColor.updateFromColor(selectedColor);
+            trail.color.updateFromColor(selectedColor);
         }
     }
 }
 
 function drawSelectColorMode() {
     colorPicker.draw();
-
-    w.fill(trailColor.getP5Color());
+    w.fill(trail.color.getP5Color());
     w.text("Current Color", 20, canvasSize.height - 20);
-}
-
-function createTrail() {
-    w.fill(trailColor.getP5Color());
-    saveLastPosition();
-    saveTrailPositions();
-    drawTrail();
 }
 
 function drawModeSelector() {
@@ -79,7 +51,7 @@ function drawCurrentMode(backgroundColor: Color) {
     w.background(backgroundColor.getP5Color());
     w.noStroke();
     drawModeSelector();
-    currentMode === Mode.normal ? createTrail() : drawSelectColorMode();
+    currentMode === Mode.normal ? trail.draw(w.mouseX, w.mouseY) : drawSelectColorMode();
 }
 
 export { drawCurrentMode, handleClick };
