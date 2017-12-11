@@ -28,7 +28,7 @@ function handleClick(x: number, y: number, backgroundColor: Color) {
     if (currentMode === Mode.selectColor) {
         const selectedColor = Color.fromArray(w.get(x, y));
         if (!selectedColor.isEqual(backgroundColor)) {
-            trail.color.updateFromColor(selectedColor);
+            trail.color = selectedColor;
         }
     }
 }

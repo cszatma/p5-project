@@ -1,28 +1,46 @@
 import Color from "./Color";
 
 class FadingTrail {
-    length: number;
-    xPositions: number[];
-    yPositions: number[];
-    color: Color;
+    _length: number;
+    _xPositions: number[];
+    _yPositions: number[];
+    _color: Color;
 
     constructor(length: number, color: Color) {
-        this.length = length;
-        this.color = color;
-        this.xPositions = [];
-        this.yPositions = [];
+        this._length = length;
+        this._color = color;
+        this._xPositions = [];
+        this._yPositions = [];
+    }
+
+    get length(): number {
+        return this._length;
+    }
+
+    set length(length: number) {
+        this._length = length;
+        this._xPositions = [];
+        this._yPositions = [];
+    }
+
+    get color(): Color {
+        return this._color.clone();
+    }
+
+    set color(color: Color) {
+        this._color.updateFromColor(color);
     }
 
     draw(x: number, y: number) {
-        this.xPositions[this.length] = x;
-        this.yPositions[this.length] = y;
+        this._xPositions[this._length] = x;
+        this._yPositions[this._length] = y;
 
-        this.xPositions.shift();
-        this.yPositions.shift();
+        this._xPositions.shift();
+        this._yPositions.shift();
 
-        window.fill(this.color.p5Color);
-        this.xPositions.forEach((x, i) => {
-            window.ellipse(x, this.yPositions[i], i / 2, i / 2); });
+        window.fill(this._color.p5Color);
+        this._xPositions.forEach((x, i) => {
+            window.ellipse(x, this._yPositions[i], i / 2, i / 2); });
     }
 
 
