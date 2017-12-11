@@ -20,7 +20,7 @@ class FadingTrail {
         this.xPositions.shift();
         this.yPositions.shift();
 
-        window.fill(this.color.getP5Color());
+        window.fill(this.color.p5Color);
         this.xPositions.forEach((x, i) => {
             window.ellipse(x, this.yPositions[i], i / 2, i / 2); });
     }

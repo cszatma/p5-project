@@ -23,7 +23,7 @@ class ColorPicker {
         let x = this.origin.x, y = this.origin.y;
         let [horizontal, vertical] = directionMatrix(this.direction);
         for (let i = 0; i < this.colors.length; i++) {
-            window.fill(this.colors[i].getP5Color());
+            window.fill(this.colors[i].p5Color);
             window.rect(x, y, this.size.width, this.size.height);
             x += this.size.width * horizontal;
             y += this.size.height * vertical;

@@ -35,7 +35,7 @@ function handleClick(x: number, y: number, backgroundColor: Color) {
 
 function drawSelectColorMode() {
     colorPicker.draw();
-    w.fill(trail.color.getP5Color());
+    w.fill(trail.color.p5Color);
     w.text("Current Color", 20, canvasSize.height - 20);
 }
 
@@ -48,7 +48,7 @@ function drawModeSelector() {
 }
 
 function drawCurrentMode(backgroundColor: Color) {
-    w.background(backgroundColor.getP5Color());
+    w.background(backgroundColor.p5Color);
     w.noStroke();
     drawModeSelector();
     currentMode === Mode.normal ? trail.draw(w.mouseX, w.mouseY) : drawSelectColorMode();
