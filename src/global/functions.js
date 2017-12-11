@@ -35,8 +35,4 @@ function directionMatrix(direction: Direction): number[] {
     }
 }
 
-Array.prototype.equals = function(array: Array<any>) {
-    return this.length === array.length && this.every((el, i) => el === array[i]);
-};
-
 export { randomInt, isWithinRange, checkBoundary, directionMatrix };
