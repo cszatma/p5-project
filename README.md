@@ -8,8 +8,12 @@ This project uses [yarn](https://yarnpkg.com/en/) to manage dependencies.
 
 In the root directory run `yarn install` to install all dependencies.
 
-To build the app run `yarn build`, this will generate a build/ directory
-and a file named index.bundle.js.
+Use `yarn start` to run the app using webpack-dev-server. Navigate to localhost:8080.
+<br>
+The site will auto-reload whenever a source file is modified.
 
-Open public/index.html and you should see the app working.
+To build the app run `yarn build`.
+
+If you have `http-server` installed you can then run `yarn serve` 
+to host the static site. Navigate to localhost:8000.
 
