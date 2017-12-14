@@ -6,21 +6,20 @@ const resolve = path.resolve,
 
 const rootDir = resolve(__dirname);
 const srcDir = join(rootDir, 'src');
-const libDir = join(rootDir, 'lib');
 const buildDir = join(rootDir, 'build');
 
 module.exports = {
-    entry: join(libDir, 'index.js'),
+    entry: join(srcDir, 'index.js'),
     module: {
         rules: [
             {
                 test: /\.js$/,
-                include: libDir,
+                include: srcDir,
                 exclude: /(node_modules|bower_components)/,
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ['env']
+                        presets: ['flow']
                     }
                 }
             }
@@ -29,5 +28,8 @@ module.exports = {
     output: {
         path: buildDir,
         filename: 'index.bundle.js'
+    },
+    devServer: {
+        contentBase: buildDir
     }
 };
