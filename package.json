@@ -1,6 +1,7 @@
 {
   "name": "p5-project",
   "author": "Christopher Szatmary <cs@christopherszatmary.com> (http://christopherszatmary.com)",
+  "private": true,
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
@@ -8,16 +9,15 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-flow": "^6.23.0",
     "flow-bin": "^0.61.0",
-    "webpack": "^3.10.0"
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.9.7"
   },
   "dependencies": {
     "p5": "^0.5.16"
   },
   "scripts": {
-    "webpack": "webpack",
-    "start": "http-server",
-    "prepublish": "babel src/ -d lib/",
-    "build": "yarn run prepublish && yarn run webpack",
-    "serve": "yarn run build && yarn run start"
+    "start": "webpack-dev-server",
+    "build": "webpack",
+    "serve": "http-server ./build -p 8000"
   }
 }
