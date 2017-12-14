@@ -57,18 +57,18 @@ class Color {
     }
 
     /* Static Methods */
-    static randomRGBAArray(hasRandomAlpha: boolean): number[] {
+    static randomRGBAArray(hasRandomAlpha: boolean = false): number[] {
         return [randomInt(0, 256), randomInt(0, 256), randomInt(0, 256),
             hasRandomAlpha ? randomInt(0, 256) : 255];
     }
 
     /** Returns a Color object with random RGB values */
-    static random(hasRandomAlpha: boolean): Color {
+    static random(hasRandomAlpha: boolean = false): Color {
         return Color.fromArray(Color.randomRGBAArray(hasRandomAlpha));
     }
 
     /** Returns a random p5 color */
-    static randomP5Color(hasRandomAlpha: boolean): $FlowIgnore {
+    static randomP5Color(hasRandomAlpha: boolean = false): $FlowIgnore {
         return w.color(Color.randomRGBAArray(hasRandomAlpha));
     }
 
