@@ -1,7 +1,7 @@
 // @flow
 
 import Enum from "../components/Enum";
-import Size from "../components/Size";
+import Size from "../graphics/Size";
 
 // Constants
 const w = window;

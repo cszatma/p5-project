@@ -1,7 +1,7 @@
 // @flow
 
 import { canvasSize, w } from "../global/constants";
-import Color from "../components/Color";
+import Color from "../graphics/Color";
 
 const halfWidth = canvasSize.width / 2;
 const halfHeight = canvasSize.height / 2;
