@@ -1,8 +1,6 @@
 // @flow
 
-import Color from "../graphics/Color";
-import Point from "../graphics/Point";
-import Size from "../graphics/Size";
+import { Color, Point, Size } from  "../graphics/Graphics";
 import { Direction } from "../global/constants";
 import { directionMatrix } from "../global/functions";
 
