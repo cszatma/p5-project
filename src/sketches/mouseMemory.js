@@ -1,13 +1,13 @@
 // @flow
 
-import Enum from "./Enum";
-import Color from "./Color";
+import Enum from "../components/Enum";
+import Color from "../components/Color";
 import { isWithinRange } from "../global/functions";
 import { w, canvasSize, Direction } from "../global/constants";
-import ColorPicker from "./ColorPicker";
-import Point from "./Point";
-import Size from "./Size";
-import FadingTrail from "./FadingTrail";
+import ColorPicker from "../components/ColorPicker";
+import Point from "../components/Point";
+import Size from "../components/Size";
+import FadingTrail from "../components/FadingTrail";
 
 const Mode = Enum.create(["normal", "selectColor"]);
 
@@ -47,11 +47,11 @@ function drawModeSelector() {
     w.text("Change Mode", canvasSize.width - 107, canvasSize.height - 20);
 }
 
-function drawCurrentMode(backgroundColor: Color) {
+function draw(backgroundColor: Color) {
     w.background(backgroundColor.p5Color);
     w.noStroke();
     drawModeSelector();
     currentMode === Mode.normal ? trail.draw(w.mouseX, w.mouseY) : drawSelectColorMode();
 }
 
-export { drawCurrentMode, handleClick };
+export { draw, handleClick };
