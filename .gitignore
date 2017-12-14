@@ -60,8 +60,7 @@ typings/
 # Build created by webpack
 build
 
-# Lib directory used by babel when removing flow
-lib
+.DS_Store
 
 .idea
 
