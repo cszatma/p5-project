@@ -41,7 +41,7 @@ function resetEnemy(increaseScore: boolean) {
     if (enemy.origin.x < -15) {
         enemy.origin.tupleValue = spawnPoint(Direction.left);
         enemy.size.width < 50 && enemy.size.incrementBy(1);
-        enemy.speed > -15 && enemy.modifySpeedBy(-0.3);
+        enemy.speed[0] > -15 && enemy.modifySpeedBy([-0.3, 0]);
         increaseScore && game.score++
     }
 
@@ -65,7 +65,7 @@ function runGame() {
     drawHero();
     enemy.draw(w.color(255, 0, 0));
     enemy.move();
-    secondEnemy.draw(color(0, 50, 200));
+    secondEnemy.draw(w.color(0, 50, 200));
     secondEnemy.move();
     resetEnemy(true);
     checkCollision();
@@ -74,7 +74,7 @@ function runGame() {
 
 function displayStats() {
     w.fill(0);
-    textSize(20);
+    w.textSize(20);
     w.text(`Score: ${game.score}`, 10, 20);
     w.text(`Lives: ${game.lives}`, canvasSize.width - 80, 20);
 }

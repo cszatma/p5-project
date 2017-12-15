@@ -28,8 +28,9 @@ class Enemy {
             Math.abs(this.origin.y - point.y) < this.size.height;
     }
 
-    modifySpeedBy(amount: number) {
-        this.speed += amount;
+    modifySpeedBy(amount: [number, number]) {
+        this.speed[0] += amount[0];
+        this.speed[1] += amount[1];
     }
 }
 
