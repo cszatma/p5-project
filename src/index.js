@@ -2,7 +2,7 @@
 
 import "p5";
 import createSketch from "./components/createSketch";
-import Color from "./components/Color";
+import Color from "./graphics/Color";
 import "./global/extensions";
 import "./styles/index.css";
 
@@ -10,14 +10,25 @@ import "./styles/index.css";
 import * as mouseMemory from "./sketches/mouseMemory";
 import * as squareRandomDragger from "./sketches/squareRandomDragger";
 import drawFunctionMonster from "./sketches/functionMonster";
+import * as apocalypse from "./sketches/apocalypse";
 
 const backgroundColor = new Color(0, 100, 200);
 createSketch(backgroundColor, () => {
-    squareRandomDragger.setupScene();
+    //squareRandomDragger.setupScene();
+}, () => {
+    apocalypse.reset();
 });
 
 window.mouseClicked = () => {
-    mouseMemory.handleClick(window.mouseX, window.mouseY, backgroundColor);
+    //mouseMemory.handleClick(window.mouseX, window.mouseY, backgroundColor);
+};
+
+window.mousePressed = () => {
+    apocalypse.handleMousePressed();
+};
+
+window.mouseReleased = () => {
+    apocalypse.handleMouseReleased();
 };
 
 window.keyPressed = () => {
@@ -26,6 +37,7 @@ window.keyPressed = () => {
 
 window.draw = () => {
     //mouseMemory.draw(backgroundColor);
-    squareRandomDragger.draw();
+    //squareRandomDragger.draw();
     //drawFunctionMonster();
+    apocalypse.draw();
 };
