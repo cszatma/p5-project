@@ -1,26 +1,33 @@
 // @flow
 
-import { Point, Size } from "../graphics/Graphics";
+import { Color, Point, Size } from "../graphics/Graphics";
 
 class Enemy {
     origin: Point;
     size: Size;
     speed: [number, number];
+    color: Color;
 
-    constructor(origin: Point, size: Size, speed: [number, number]) {
+    constructor(origin: Point, size: Size, speed: [number, number], color: Color) {
         this.origin = origin;
         this.size = size;
         this.speed = speed;
+        this.color = color;
     }
 
-    draw(color: $FlowIgnore) {
-        window.fill(color);
+    draw() {
+        window.fill(this.color.p5Color);
         window.ellipse(this.origin.x, this.origin.y, this.size.width, this.size.height);
     }
 
     move() {
         this.origin.x += this.speed[0];
         this.origin.y += this.speed[1];
+    }
+
+    animate() {
+        this.draw();
+        this.move();
     }
 
     checkCollisionWith(point: Point): boolean {
