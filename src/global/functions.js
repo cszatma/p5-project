@@ -35,4 +35,8 @@ function directionMatrix(direction: Direction): number[] {
     }
 }
 
-export { randomInt, isWithinRange, checkBoundary, directionMatrix };
+function addBinaryTuples(first: [number, number], second: [number, number]): [number, number] {
+    return [first[0] + second[0], first[1] + second[1]];
+}
+
+export { randomInt, isWithinRange, checkBoundary, directionMatrix, addBinaryTuples };
