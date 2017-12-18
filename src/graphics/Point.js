@@ -1,6 +1,6 @@
 // @flow
 
-class Point {
+export default class Point {
     x: number;
     y: number;
 
@@ -30,5 +30,3 @@ class Point {
         return new Point(0, 0);
     }
 }
-
-export default Point;

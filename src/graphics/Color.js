@@ -3,7 +3,7 @@
 import { randomInt } from "../global/functions";
 import { w } from "../global/constants";
 
-class Color {
+export default class Color {
     r: number;
     g: number;
     b: number;
@@ -82,5 +82,3 @@ class Color {
         return new Color(array[0], array[1], array[2], array[3] || 255);
     }
 }
-
-export default Color;

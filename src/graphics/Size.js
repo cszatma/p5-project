@@ -1,6 +1,6 @@
 // @flow
 
-class Size {
+export default class Size {
     width: number;
     height: number;
 
@@ -35,5 +35,3 @@ class Size {
         return new Size(tuple[0], tuple[1]);
     }
 }
-
-export default Size;
