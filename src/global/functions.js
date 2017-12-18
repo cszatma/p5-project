@@ -27,7 +27,7 @@ function checkBoundary(value: number, direction: Direction): boolean {
     }
 }
 
-function directionMatrix(direction: Direction): number[] {
+function directionMatrix(direction: Direction): [number, number] {
     if (direction === Direction.left || direction === Direction.right) {
         return [direction === Direction.left ? -1 : 1, 0];
     } else {
@@ -39,4 +39,8 @@ function addBinaryTuples(first: [number, number], second: [number, number]): [nu
     return [first[0] + second[0], first[1] + second[1]];
 }
 
-export { randomInt, isWithinRange, checkBoundary, directionMatrix, addBinaryTuples };
+function scaleBinaryTuple(tuple: [number, number], scalar: number): [number, number] {
+    return [tuple[0] * scalar, tuple[1] * scalar];
+}
+
+export { randomInt, isWithinRange, checkBoundary, directionMatrix, addBinaryTuples, scaleBinaryTuple };
