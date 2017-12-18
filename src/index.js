@@ -7,10 +7,7 @@ import "./global/extensions";
 import "./styles/index.css";
 
 // Import Sketches
-import * as mouseMemory from "./sketches/mouseMemory";
-import * as squareRandomDragger from "./sketches/squareRandomDragger";
-import drawFunctionMonster from "./sketches/functionMonster";
-import * as apocalypse from "./sketches/apocalypse";
+import { apocalypse, drawFunctionMonster, mouseMemory, squareRandomDragger } from "./sketches/Sketch";
 
 const backgroundColor = new Color(0, 100, 200);
 createSketch(backgroundColor, () => {
