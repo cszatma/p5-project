@@ -3,13 +3,13 @@
 import { randomInt } from "../global/functions";
 import { Direction, w, canvasSize } from "../global/constants";
 import Enemy from "../components/Enemy";
-import { Point, Size } from "../graphics/Graphics";
+import { Color, Point, Size } from "../graphics/Graphics";
 
 const enemy = new Enemy(Point.fromTuple(spawnPoint(Direction.left)),
-    new Size(15, 15), [-10, 0]);
+    new Size(15, 15), [-10, 0], new Color(255, 0, 0));
 
 const secondEnemy = new Enemy(Point.fromTuple(spawnPoint(Direction.right)),
-    new Size(25, 25), [10, 0.5]);
+    new Size(25, 25), [10, 0.5], new Color(0, 50, 200));
 
 const game = {
     score: 0,
@@ -63,10 +63,8 @@ function checkCollision() {
 function runGame() {
     w.background(100, 150, 225);
     drawHero();
-    enemy.draw(w.color(255, 0, 0));
-    enemy.move();
-    secondEnemy.draw(w.color(0, 50, 200));
-    secondEnemy.move();
+    enemy.animate();
+    secondEnemy.animate();
     resetEnemy(true);
     checkCollision();
     displayStats()
@@ -93,19 +91,21 @@ function reset() {
 }
 
 function handleMousePressed() {
-    game.heroSize /= 2;
-    enemy.size.incrementBy(10);
-    secondEnemy.size.incrementBy(10);
-    enemy.speed[0] -= 5;
-    secondEnemy.speed[0] += 5;
+    toggleSizes(true);
 }
 
 function handleMouseReleased() {
-    game.heroSize *= 2;
-    enemy.size.incrementBy(-10);
-    secondEnemy.size.incrementBy(-10);
-    enemy.speed[0] += 5;
-    secondEnemy.speed[0] -= 5;
+    toggleSizes(false);
+}
+
+function toggleSizes(mousePressed: boolean) {
+    game.heroSize *= mousePressed ? 1/2 : 2;
+    const enemyIncrement = mousePressed ? 10 : -10;
+    const speedIncrement = mousePressed ? 5 : -5;
+    enemy.size.incrementBy(enemyIncrement);
+    secondEnemy.size.incrementBy(enemyIncrement);
+    enemy.speed[0] -= speedIncrement;
+    secondEnemy.speed[0] += speedIncrement;
 }
 
 function draw() {
