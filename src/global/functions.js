@@ -27,6 +27,10 @@ function checkBoundary(value: number, direction: Direction): boolean {
     }
 }
 
+function isOutOfBounds(point: Point): boolean {
+    return point.x < 0 || point.x > canvasSize.width || point.y < 0 || point.y > canvasSize.height;
+}
+
 function directionMatrix(direction: Direction): [number, number] {
     if (direction === Direction.left || direction === Direction.right) {
         return [direction === Direction.left ? -1 : 1, 0];
@@ -43,4 +47,4 @@ function scaleBinaryTuple(tuple: [number, number], scalar: number): [number, num
     return [tuple[0] * scalar, tuple[1] * scalar];
 }
 
-export { randomInt, isWithinRange, checkBoundary, directionMatrix, addBinaryTuples, scaleBinaryTuple };
+export { randomInt, isWithinRange, checkBoundary, isOutOfBounds, directionMatrix, addBinaryTuples, scaleBinaryTuple };
