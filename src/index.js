@@ -7,14 +7,14 @@ import "./global/extensions";
 import "./styles/index.css";
 
 // Import Sketches
-import { apocalypse, drawFunctionMonster, mouseMemory, squareRandomDragger, Snake } from "./sketches/Sketch";
+import { Apocalypse, drawFunctionMonster, mouseMemory, squareRandomDragger, Snake } from "./sketches/Sketch";
 
 const backgroundColor = new Color(0, 100, 200);
 createSketch(backgroundColor, () => {
     //squareRandomDragger.setupScene();
     Snake.setup();
 }, () => {
-    //apocalypse.reset();
+    //Apocalypse.reset();
     Snake.reset();
 });
 
@@ -23,11 +23,11 @@ window.mouseClicked = () => {
 };
 
 window.mousePressed = () => {
-    //apocalypse.handleMousePressed();
+    //Apocalypse.handleMousePressed();
 };
 
 window.mouseReleased = () => {
-    //apocalypse.handleMouseReleased();
+    //Apocalypse.handleMouseReleased();
 };
 
 window.keyPressed = () => {
@@ -38,6 +38,6 @@ window.draw = () => {
     //mouseMemory.draw(backgroundColor);
     //squareRandomDragger.draw();
     //drawFunctionMonster();
-    //apocalypse.run();
+    //Apocalypse.run();
     Snake.run();
 };
