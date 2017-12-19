@@ -108,8 +108,8 @@ function toggleSizes(mousePressed: boolean) {
     secondEnemy.speed[0] += speedIncrement;
 }
 
-function draw() {
+function run() {
     game.lives > 0 ? runGame() : gameOver();
 }
 
-export { draw, reset, handleMousePressed, handleMouseReleased };
+export { run, reset, handleMousePressed, handleMouseReleased };
