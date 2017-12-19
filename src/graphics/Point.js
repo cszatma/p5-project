@@ -22,6 +22,10 @@ export default class Point {
         return this.x === point.x && this.y === point.y;
     }
 
+    clone(): Point {
+        return new Point(this.x, this.y);
+    }
+
     static fromTuple(tuple: [number, number]): Point {
         return new Point(tuple[0], tuple[1]);
     }

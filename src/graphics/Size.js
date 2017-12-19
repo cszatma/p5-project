@@ -27,6 +27,10 @@ export default class Size {
         return this.width === size.width && this.height === size.width;
     }
 
+    clone(): Size {
+        return new Size(this.width, this.height);
+    }
+
     static withSide(side: number): Size {
         return new Size(side, side);
     }
