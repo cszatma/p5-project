@@ -35,7 +35,7 @@ function directionMatrix(direction: Direction): [number, number] {
     if (direction === Direction.left || direction === Direction.right) {
         return [direction === Direction.left ? -1 : 1, 0];
     } else {
-        return [0, direction === direction.up ? -1 : 1];
+        return [0, direction === Direction.up ? -1 : 1];
     }
 }
 
