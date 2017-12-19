@@ -1,7 +1,7 @@
 // @flow
 
 import Enum from "../components/Enum";
-import { Color, Point, Size } from "../graphics/Graphics";
+import { Color, Point, Size, Text } from "../graphics/Graphics";
 import { isWithinRange } from "../global/functions";
 import { w, canvasSize, Direction } from "../global/constants";
 import ColorPicker from "../components/ColorPicker";
@@ -33,16 +33,13 @@ function handleClick(x: number, y: number, backgroundColor: Color) {
 
 function drawSelectColorMode() {
     colorPicker.draw();
-    w.fill(trail.color.p5Color);
-    w.text("Current Color", 20, canvasSize.height - 20);
+    Text.p5Text("Current Color", new Point(20, canvasSize.height - 20), trail.color, 15);
 }
 
 function drawModeSelector() {
     w.fill(170, 150, 125);
     w.rect(canvasSize.width - 110, canvasSize.height - 40, 100, 30);
-    w.fill(25, 150, 250);
-    w.textSize(15);
-    w.text("Change Mode", canvasSize.width - 107, canvasSize.height - 20);
+    Text.p5Text("Change Mode", new Point(canvasSize.width - 107, canvasSize.height - 20), new Color(25, 150, 250), 15);
 }
 
 function draw(backgroundColor: Color) {
