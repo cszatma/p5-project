@@ -17,7 +17,7 @@ export default class Text {
     }
 
     draw() {
-        Text.p5Text(this.stringValue, this.origin, this.size, this.color);
+        Text.p5Text(this.stringValue, this.origin, this.color, this.size);
     }
 
     static get defaultSize(): number {
