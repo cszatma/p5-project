@@ -1,8 +1,8 @@
 // @flow
 
-import { Color, Point, Rectangle, Size } from  "../graphics/Graphics";
-import { Direction } from "../global/constants";
-import { directionMatrix } from "../global/functions";
+import { Color, Point, Rectangle, Size } from  "graphics/Graphics";
+import { Direction } from "global/constants";
+import { directionMatrix } from "global/functions";
 
 class ColorPicker {
     _colorRects: Rectangle[];

@@ -72,5 +72,8 @@ module.exports = {
             }
         }),
         new ExtractTextPlugin("index.css")
-    ]
+    ],
+    resolve: {
+        modules: ["node_modules", srcDir],
+    },
 };

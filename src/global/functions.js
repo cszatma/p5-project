@@ -1,5 +1,5 @@
 // @flow
-import Point from "../graphics/Point";
+import Point from "graphics/Point";
 import { canvasSize, Direction } from "./constants";
 
 function randomInt(min: number, max: number): number {

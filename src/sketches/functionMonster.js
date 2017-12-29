@@ -1,4 +1,4 @@
-import { w } from "../global/constants";
+import { w } from "global/constants";
 
 export default function drawFunctionMonster() {
     function drawBody() {

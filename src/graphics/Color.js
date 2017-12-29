@@ -1,7 +1,7 @@
 // @flow
 
-import { randomInt } from "../global/functions";
-import { w } from "../global/constants";
+import { randomInt } from "global/functions";
+import { w } from "global/constants";
 
 export default class Color {
     r: number;

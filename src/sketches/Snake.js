@@ -1,8 +1,8 @@
 // @flow
 
-import { Color, Point, Rectangle, Size } from "../graphics/Graphics";
-import { w, Direction } from "../global/constants";
-import { addBinaryTuples, directionMatrix, isOutOfBounds, randomInt, scaleBinaryTuple } from "../global/functions";
+import { Color, Point, Rectangle, Size } from "graphics/Graphics";
+import { w, Direction } from "global/constants";
+import { addBinaryTuples, directionMatrix, isOutOfBounds, randomInt, scaleBinaryTuple } from "global/functions";
 
 class Snake {
     points: Point[];

@@ -1,9 +1,9 @@
 // @flow
 
-import { randomInt } from "../global/functions";
-import { Direction, w, canvasSize } from "../global/constants";
-import Enemy from "../components/Enemy";
-import { Color, Point, Size } from "../graphics/Graphics";
+import { randomInt } from "global/functions";
+import { Direction, w, canvasSize } from "global/constants";
+import Enemy from "components/Enemy";
+import { Color, Point, Size } from "graphics/Graphics";
 
 const enemy = new Enemy(Point.fromTuple(spawnPoint(Direction.left)),
     new Size(15, 15), [-10, 0], new Color(255, 0, 0));

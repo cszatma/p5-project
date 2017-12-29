@@ -1,6 +1,6 @@
 // @flow
 
-import { Color, Point, Size } from "../graphics/Graphics";
+import { Color, Point, Size } from "graphics/Graphics";
 
 class Enemy {
     origin: Point;

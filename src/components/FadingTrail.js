@@ -1,4 +1,4 @@
-import Color from "../graphics/Color";
+import Color from "graphics/Color";
 
 class FadingTrail {
     _length: number;

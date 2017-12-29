@@ -1,11 +1,11 @@
 // @flow
 
-import Enum from "../components/Enum";
-import { Color, Point, Size, Text } from "../graphics/Graphics";
-import { isWithinRange } from "../global/functions";
-import { w, canvasSize, Direction } from "../global/constants";
-import ColorPicker from "../components/ColorPicker";
-import FadingTrail from "../components/FadingTrail";
+import Enum from "components/Enum";
+import { Color, Point, Size, Text } from "graphics/Graphics";
+import { isWithinRange } from "global/functions";
+import { w, canvasSize, Direction } from "global/constants";
+import ColorPicker from "components/ColorPicker";
+import FadingTrail from "components/FadingTrail";
 
 const Mode = Enum.create(["normal", "selectColor"]);
 

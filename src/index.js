@@ -1,13 +1,13 @@
 // @flow
 
 import "p5";
-import createSketch from "./components/createSketch";
-import Color from "./graphics/Color";
-import "./global/extensions";
-import "./styles/index.css";
+import createSketch from "components/createSketch";
+import Color from "graphics/Color";
+import "global/extensions";
+import "styles/index.css";
 
 // Import Sketches
-import { Apocalypse, drawFunctionMonster, mouseMemory, squareRandomDragger, Snake } from "./sketches/Sketch";
+import { Apocalypse, drawFunctionMonster, mouseMemory, squareRandomDragger, Snake } from "sketches/Sketch";
 
 const backgroundColor = new Color(0, 100, 200);
 createSketch(backgroundColor, () => {
