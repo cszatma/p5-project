@@ -11,14 +11,12 @@ import type Sketch from "sketches/Sketch";
 import * as Sketches from "sketches/Sketches";
 
 const backgroundColor = new Color(0, 100, 200);
-const sketch = Sketches.squareRandomDragger;
+const sketch = Sketches.snake;
 
 createCanvas(backgroundColor, () => {
     sketch.setup();
-    //Snake.setup();
 }, () => {
     sketch.reset();
-    //Snake.reset();
 });
 
 window.mouseClicked = () => {
@@ -34,7 +32,7 @@ window.mouseReleased = () => {
 };
 
 window.keyPressed = () => {
-    //Snake.handleKeyPressed(window.keyCode);
+    sketch.handleKeyPressed({ keyCode: window.keyCode });
 };
 
 window.draw = () => {

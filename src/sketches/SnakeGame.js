@@ -1,13 +1,11 @@
 // @flow
 
+import Sketch from "./Sketch";
 import { Color, Point, Rectangle, Size } from "graphics/Graphics";
 import { w, Direction } from "global/constants";
-import { addBinaryTuples, directionMatrix, isOutOfBounds, randomInt, scaleBinaryTuple } from "global/functions";
+import { randomInt, directionFromArrowKey } from "global/functions";
+import Snake from "components/Snake";
 
-
-
-const cellSize = 20;
-const food = new Rectangle(Point.zero, new Size(cellSize, cellSize), new Color(0, 255, 0));
 const game = {
     isOver: false,
     _speed: 10,
@@ -20,62 +18,66 @@ const game = {
     }
 };
 
-let snake = new Snake(5, cellSize, Direction.right);
+type Args = {
+    keyCode: number,
+};
 
-function createFood() {
-    let multiplier = Math.round((400 - cellSize) / cellSize);
-    food.origin.x = Math.round(randomInt(0, multiplier)) * cellSize;
-    food.origin.y = Math.round(randomInt(0, multiplier)) * cellSize;
-}
+class SnakeGame extends Sketch<Args> {
+    _snake: Snake;
+    _cellSize: number;
+    _food: Rectangle;
 
-function setup() {
-    w.frameRate(game.speed);
-    createFood();
-}
-
-function run() {
-    if (game.isOver) {
-        w.background(255, 0, 0);
-        return;
+    constructor(cellSize: number) {
+        super();
+        this._cellSize = cellSize;
+        this._snake = new Snake(5, cellSize, Direction.right);
+        this._food = new Rectangle(Point.zero, Size.withSide(cellSize), Color.green());
     }
 
-    w.background(255);
-    snake.draw();
-    food.draw();
-    snake.move(food.origin, () => {
-        game.speed++;
-        createFood();
-    });
-
-    if (snake.checkCollision()) {
-        game.isOver = true;
-    }
-}
-
-function reset() {
-    game.isOver = false;
-    game.speed = 10;
-    snake = new Snake(5, cellSize, Direction.right);
-    createFood();
-}
-
-function handleKeyPressed(keyCode: number) {
-    switch (keyCode) {
-        case w.LEFT_ARROW:
-            snake.direction = Direction.left;
-            break;
-        case w.RIGHT_ARROW:
-            snake.direction = Direction.right;
-            break;
-        case w.UP_ARROW:
-            snake.direction = Direction.up;
-            break;
-        case w.DOWN_ARROW:
-            snake.direction = Direction.down;
-            break;
-        default:
+    draw() {
+        if (game.isOver) {
+            w.background(255, 0, 0);
             return;
+        }
+
+        w.background(255);
+        this._snake.draw();
+        this._food.draw();
+        this._snake.move(this._food.origin, () => {
+            game.speed++;
+            this._createFood();
+        });
+
+        if (this._snake.checkCollision()) {
+            game.isOver = true;
+        }
+    }
+
+    setup() {
+        w.frameRate(game.speed);
+        this._createFood();
+    }
+
+    reset() {
+        game.isOver = false;
+        game.speed = 10;
+        this._snake = new Snake(5, this._cellSize, Direction.right);
+        this._createFood();
+    }
+
+    handleKeyPressed({ keyCode}: Args) {
+        const direction = directionFromArrowKey(keyCode);
+        if (direction) {
+            this._snake.direction = direction;
+        }
+    }
+
+    _createFood() {
+        const cellSize = this._cellSize;
+        let multiplier = Math.round((400 - cellSize) / cellSize);
+        this._food.origin.x = Math.round(randomInt(0, multiplier)) * cellSize;
+        this._food.origin.y = Math.round(randomInt(0, multiplier)) * cellSize;
     }
 }
 
-export { setup, run, reset, handleKeyPressed };
+export default new SnakeGame(20);
