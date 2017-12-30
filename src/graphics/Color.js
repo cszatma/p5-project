@@ -82,4 +82,29 @@ export default class Color {
     static fromTuple(array: ColorTuple): Color {
         return new Color(array[0], array[1], array[2], array[3] || 255);
     }
+
+    /* Colors */
+    static black(): Color {
+        return new Color(0);
+    }
+
+    static white(): Color {
+        return new Color(255);
+    }
+
+    static gray(): Color {
+        return new Color(128);
+    }
+
+    static red(): Color {
+        return new Color(255, 0, 0);
+    }
+
+    static green(): Color {
+        return new Color(0, 255, 0);
+    }
+
+    static blue(): Color {
+        return new Color(0, 0, 255);
+    }
 }

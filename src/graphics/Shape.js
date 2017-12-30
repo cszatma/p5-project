@@ -29,8 +29,8 @@ export default class Shape {
         window.fill(this.color.p5Color);
     }
 
-    onClick(handler: void => void) {
-        this.isWithinBounds(window.mouse) && handler();
+    onClick(handler: void => void, point: Point = window.mouse) {
+        this.isWithinBounds(point) && handler();
     }
 
     isWithinBounds(point: Point): boolean {
