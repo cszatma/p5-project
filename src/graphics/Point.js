@@ -1,6 +1,7 @@
 // @flow
 
 import type { PointTuple } from "global/typealiases";
+import { pythagoreanTheorem } from "global/functions";
 
 export default class Point {
     x: number;
@@ -26,6 +27,10 @@ export default class Point {
 
     clone(): Point {
         return new Point(this.x, this.y);
+    }
+
+    distanceTo(point: Point): number {
+        return pythagoreanTheorem(point.x - this.x, point.y - this.y);
     }
 
     static fromTuple(tuple: PointTuple): Point {
