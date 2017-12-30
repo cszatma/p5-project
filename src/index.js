@@ -1,7 +1,7 @@
 // @flow
 
 import "p5";
-import createSketch from "components/createSketch";
+import createCanvas from "components/createCanvas";
 import Color from "graphics/Color";
 import "global/extensions";
 import "styles/index.css";
@@ -13,7 +13,7 @@ import { apocalypse, functionMonster, mouseMemory, squareRandomDragger, Snake } 
 const backgroundColor = new Color(0, 100, 200);
 const sketch = functionMonster;
 
-createSketch(backgroundColor, () => {
+createCanvas(backgroundColor, () => {
     sketch.setup();
     //squareRandomDragger.setupScene();
     //Snake.setup();

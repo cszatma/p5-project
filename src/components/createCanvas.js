@@ -4,7 +4,7 @@ import "p5/lib/addons/p5.dom";
 import Color from "graphics/Color";
 import { canvasSize } from "global/constants";
 
-export default function createSketch(color: Color = new Color(255), additionalSetup?: void => void, resetHandler?: void => void) {
+export default function createCanvas(color: Color = new Color(255), additionalSetup?: void => void, resetHandler?: void => void) {
     window.setup = () => {
         window.createCanvas(canvasSize.width, canvasSize.height);
         window.background(color.p5Color);
