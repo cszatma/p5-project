@@ -1,9 +1,9 @@
 import Sketch from './Sketch';
 
-import * as mouseMemory from "./mouseMemory";
+import mouseMemory from "./mouseMemory";
 import * as squareRandomDragger from "./squareRandomDragger";
 import drawFunctionMonster from "./functionMonster";
-import * as Apocalypse from "./apocalypse";
+import apocalypse from "./apocalypse";
 import * as Snake from "./Snake";
 
-export { mouseMemory, squareRandomDragger, drawFunctionMonster, Apocalypse, Sketch, Snake };
+export { mouseMemory, squareRandomDragger, drawFunctionMonster, apocalypse, Sketch, Snake };
