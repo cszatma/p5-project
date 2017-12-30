@@ -1,6 +1,6 @@
 // @flow
 
-import { PointTuple } from "global/typealiases";
+import type { PointTuple } from "global/typealiases";
 
 export default class Point {
     x: number;

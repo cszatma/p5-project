@@ -1,6 +1,6 @@
 // @flow
 
-import { ColorTuple } from "global/typealiases";
+import type { ColorTuple } from "global/typealiases";
 import { randomInt } from "global/functions";
 import { w } from "global/constants";
 
