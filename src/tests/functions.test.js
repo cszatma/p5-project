@@ -20,4 +20,7 @@ describe("Test all global functions", () => {
 
     test("3^2 + 4^2 = 5^2", () =>
         expect(fn.pythagoreanTheorem(3, 4)).toBe(5));
+
+    test("39 should be Direction.right", () =>
+        expect(fn.directionFromArrowKey(39)).toEqual(Direction.right));
 });
