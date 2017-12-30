@@ -30,10 +30,10 @@ export default class Shape {
     }
 
     onClick(handler: void => void) {
-        this._isWithinBounds() && handler();
+        this.isWithinBounds(window.mouse) && handler();
     }
 
-    _isWithinBounds(): boolean {
+    isWithinBounds(point: Point): boolean {
         return false;
     }
 

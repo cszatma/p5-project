@@ -16,9 +16,10 @@ export default class Rectangle extends Shape {
         window.rect(this.origin.x, this.origin.y, this.size.width, this.size.height)
     }
 
-    _isWithinBounds(): boolean {
-        return isWithinRange(this.origin.x, 390, 490)
-            && isWithinRange(this.origin.y, 460, 490);
+    isWithinBounds(point: Point): boolean {
+        const { x, y } = this.origin;
+        return isWithinRange(point.x, x, x + this.size.width)
+            && isWithinRange(point.y, y, y + this.size.height);
     }
 
     static init(x: number, y: number, width: number, height: number, color: Color): Rectangle {

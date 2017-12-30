@@ -3,21 +3,30 @@
 import Color from "./Color";
 import Point from "./Point";
 import Size from "./Size";
+import Shape from "./Shape";
 
-export default class Ellipse {
-    origin: Point;
-    size: Size;
-    color: Color;
-
+export default class Ellipse extends Shape {
     constructor(origin: Point, size: Size, color: Color) {
-        this.origin = origin;
-        this.size = size;
-        this.color = color;
+        super(origin, size, color);
     }
 
     draw() {
-        window.fill(this.color.p5Color);
+        super.draw();
         window.ellipse(this.origin.x, this.origin.y, this.size.width, this.size.height);
+    }
+
+    isWithinBounds(point: Point): boolean {
+        const { x, y } = this.origin;
+        const deltaX = (point.x - x) ** 2, deltaY = (point.y - y) ** 2;
+        return (deltaX / (this.radiusX ** 2)) + (deltaY / (this.radiusY ** 2)) <= 1;
+    }
+
+    get radiusX(): number {
+        return this.size.width / 2;
+    }
+
+    get radiusY(): number {
+        return this.size.height / 2;
     }
 
     static init(x: number, y: number, width: number, height: number, color: Color): Ellipse {
