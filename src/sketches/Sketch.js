@@ -29,4 +29,18 @@ export default class Sketch<Args> {
     handleMouseReleased(args?: Args) {}
 
     handleKeyPressed(args?: Args) {}
+
+    /**
+     * Creates a Sketch from a given function.
+     * Useful for creating basic sketches that only have a draw function.
+     * @param drawFunction The function that will be used in the Sketch's draw function.
+     * @returns A Sketch class.
+     */
+    static createSketch(drawFunction: void => void): Object {
+        return class extends Sketch<{}> {
+            draw() {
+                drawFunction();
+            }
+        };
+    }
 }
