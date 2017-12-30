@@ -7,37 +7,38 @@ import "global/extensions";
 import "styles/index.css";
 
 // Import Sketches
-import { Apocalypse, drawFunctionMonster, mouseMemory, squareRandomDragger, Snake } from "sketches/Sketches";
+import type Sketch from "sketches/Sketch";
+import { apocalypse, drawFunctionMonster, mouseMemory, squareRandomDragger, Snake } from "sketches/Sketches";
 
 const backgroundColor = new Color(0, 100, 200);
+const sketch = apocalypse;
+
 createSketch(backgroundColor, () => {
+    sketch.setup();
     //squareRandomDragger.setupScene();
-    Snake.setup();
+    //Snake.setup();
 }, () => {
-    //Apocalypse.reset();
-    Snake.reset();
+    sketch.reset();
+    //Snake.reset();
 });
 
 window.mouseClicked = () => {
-    //mouseMemory.handleClick(window.mouseX, window.mouseY, backgroundColor);
+    sketch.handleClick({ backgroundColor });
 };
 
 window.mousePressed = () => {
-    //Apocalypse.handleMousePressed();
+    sketch.handleMousePressed();
 };
 
 window.mouseReleased = () => {
-    //Apocalypse.handleMouseReleased();
+    sketch.handleMouseReleased();
 };
 
 window.keyPressed = () => {
-    Snake.handleKeyPressed(window.keyCode);
+    //Snake.handleKeyPressed(window.keyCode);
 };
 
 window.draw = () => {
-    //mouseMemory.draw(backgroundColor);
-    //squareRandomDragger.draw();
-    //drawFunctionMonster();
-    //Apocalypse.run();
-    Snake.run();
+    // sketch.draw({ backgroundColor });
+    sketch.draw();
 };
