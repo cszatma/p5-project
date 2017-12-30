@@ -1,5 +1,7 @@
 // @flow
 
+import { PointTuple } from "global/typealiases";
+
 export default class Point {
     x: number;
     y: number;
@@ -9,11 +11,11 @@ export default class Point {
         this.y = y;
     }
 
-    get tupleValue(): [number, number] {
+    get tupleValue(): PointTuple {
         return [this.x, this.y];
     }
 
-    set tupleValue(newValue: [number, number]) {
+    set tupleValue(newValue: PointTuple) {
         this.x = newValue[0];
         this.y = newValue[1];
     }
@@ -26,7 +28,7 @@ export default class Point {
         return new Point(this.x, this.y);
     }
 
-    static fromTuple(tuple: [number, number]): Point {
+    static fromTuple(tuple: PointTuple): Point {
         return new Point(tuple[0], tuple[1]);
     }
 

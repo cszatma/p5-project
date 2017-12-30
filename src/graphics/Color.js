@@ -1,5 +1,6 @@
 // @flow
 
+import { ColorTuple } from "global/typealiases";
 import { randomInt } from "global/functions";
 import { w } from "global/constants";
 
@@ -39,12 +40,12 @@ export default class Color {
         this.setColor(color.r, color.g, color.b, color.a);
     }
 
-    get array(): number[] {
+    get tupleValue(): ColorTuple {
         return [this.r, this.g, this.b, this.a];
     }
 
     /** Updates the object's RBGA values using a given array */
-    set array(array: number[]) {
+    set tupleValue(array: ColorTuple) {
         this.setColor(array[0], array[1], array[2], array[3] || 255);
     }
 
@@ -57,19 +58,19 @@ export default class Color {
     }
 
     /* Static Methods */
-    static randomRGBAArray(hasRandomAlpha: boolean = false): number[] {
+    static randomRGBATuple(hasRandomAlpha: boolean = false): ColorTuple {
         return [randomInt(0, 256), randomInt(0, 256), randomInt(0, 256),
             hasRandomAlpha ? randomInt(0, 256) : 255];
     }
 
     /** Returns a Color object with random RGB values */
     static random(hasRandomAlpha: boolean = false): Color {
-        return Color.fromArray(Color.randomRGBAArray(hasRandomAlpha));
+        return Color.fromTuple(Color.randomRGBATuple(hasRandomAlpha));
     }
 
     /** Returns a random p5 color */
     static randomP5Color(hasRandomAlpha: boolean = false): $FlowIgnore {
-        return w.color(Color.randomRGBAArray(hasRandomAlpha));
+        return w.color(Color.randomRGBATuple(hasRandomAlpha));
     }
 
     /** Returns a Color object from a given p5 color */
@@ -78,7 +79,7 @@ export default class Color {
     }
 
     /** Returns a Color object from a given array */
-    static fromArray(array: number[]): Color {
+    static fromTuple(array: ColorTuple): Color {
         return new Color(array[0], array[1], array[2], array[3] || 255);
     }
 }
