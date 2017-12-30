@@ -40,4 +40,8 @@ export default class Point {
     static get zero(): Point {
         return new Point(0, 0);
     }
+
+    static at(number: number) {
+        return new Point(number, number);
+    }
 }
