@@ -1,6 +1,6 @@
 // @flow
 
-export default class Sketch {
+export default class Sketch<Args> {
     constructor() {
         // $FlowIgnore
         if (new.target === Sketch) {
@@ -13,20 +13,20 @@ export default class Sketch {
     /**
      * Required by every implementation of Sketch
      */
-    draw() {}
+    draw(args?: Args) {}
 
     /**
      * Performs any necessary setup actions before the sketch is drawn.
      */
-    setup() {}
+    setup(args?: Args) {}
 
-    reset() {}
+    reset(args?: Args) {}
 
-    handleClick(x: number, y: number) {}
+    handleClick(args?: Args) {}
 
-    handleMousePressed() {}
+    handleMousePressed(args?: Args) {}
 
-    handleMouseReleased() {}
+    handleMouseReleased(args?: Args) {}
 
-    handleKeyPressed(key: any) {}
+    handleKeyPressed(args?: Args) {}
 }
