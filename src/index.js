@@ -8,14 +8,13 @@ import "styles/index.css";
 
 // Import Sketches
 import type Sketch from "sketches/Sketch";
-import { apocalypse, functionMonster, mouseMemory, squareRandomDragger, Snake } from "sketches/Sketches";
+import * as Sketches from "sketches/Sketches";
 
 const backgroundColor = new Color(0, 100, 200);
-const sketch = functionMonster;
+const sketch = Sketches.squareRandomDragger;
 
 createCanvas(backgroundColor, () => {
     sketch.setup();
-    //squareRandomDragger.setupScene();
     //Snake.setup();
 }, () => {
     sketch.reset();

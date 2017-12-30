@@ -2,17 +2,23 @@
 
 import { canvasSize, w } from "global/constants";
 import Color from "graphics/Color";
+import Sketch from "./Sketch";
 
 const halfWidth = canvasSize.width / 2;
 const halfHeight = canvasSize.height / 2;
 let lastSquare = 0;
 let currentSquare = 0;
 
-function setupScene() {
+const SquareRandomDragger = Sketch.createSketch(() => {
+    changeColor();
+    drawSquares();
+}, () => {
     w.strokeWeight(5);
     w.line(halfWidth, 0, halfWidth, canvasSize.height);
     w.line(0, halfHeight, canvasSize.width, halfHeight);
-}
+});
+
+export default new SquareRandomDragger();
 
 function changeColor() {
     if (lastSquare !== currentSquare) {
@@ -33,10 +39,3 @@ function drawSquares() {
 
     w.rect(x, y, halfWidth, halfHeight);
 }
-
-function draw() {
-    changeColor();
-    drawSquares();
-}
-
-export { setupScene, draw };
