@@ -51,13 +51,13 @@ function pythagoreanTheorem(a: number, b: number): number {
     return Math.sqrt(a ** 2 + b ** 2);
 }
 
-function directionFromArrowKey(keyCode: number): Direction {
+function directionFromArrowKey(keyCode: number): ?Direction {
     switch (keyCode) {
         case 37: return Direction.left;
         case 38: return Direction.up;
         case 39: return Direction.right;
         case 40: return Direction.down;
-        default: throw new Error(`${keyCode} is not an arrow key!`);
+        default: return null;
     }
 }
 
