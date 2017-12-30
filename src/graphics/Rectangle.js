@@ -3,21 +3,22 @@
 import Color from "./Color";
 import Point from "./Point";
 import Size from "./Size";
+import Shape from "./Shape";
+import { isWithinRange } from "global/functions";
 
-export default class Rectangle {
-    origin: Point;
-    size: Size;
-    color: Color;
-
+export default class Rectangle extends Shape {
     constructor(origin: Point, size: Size, color: Color) {
-        this.origin = origin;
-        this.size = size;
-        this.color = color;
+        super(origin, size, color);
     }
 
     draw() {
-        window.fill(this.color.p5Color);
+        super.draw();
         window.rect(this.origin.x, this.origin.y, this.size.width, this.size.height)
+    }
+
+    _isWithinBounds(): boolean {
+        return isWithinRange(this.origin.x, 390, 490)
+            && isWithinRange(this.origin.y, 460, 490);
     }
 
     static init(x: number, y: number, width: number, height: number, color: Color): Rectangle {
