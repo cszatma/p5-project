@@ -33,7 +33,7 @@ export default class Ellipse extends Shape {
         return new Ellipse(new Point(x, y), new Size(width, height), color);
     }
 
-    static p5Rect(origin: Point, size: Size, color?: Color) {
+    static p5Ellipse(origin: Point, size: Size, color?: Color) {
         color !== undefined && window.fill(color.p5Color);
         window.ellipse(origin.x, origin.y, size.width, size.height);
     }
