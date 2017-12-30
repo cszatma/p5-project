@@ -1,5 +1,7 @@
 // @flow
 
+import {setup} from "./Snake";
+
 export default class Sketch<Args> {
     constructor() {
         // $FlowIgnore
@@ -34,12 +36,17 @@ export default class Sketch<Args> {
      * Creates a Sketch from a given function.
      * Useful for creating basic sketches that only have a draw function.
      * @param drawFunction The function that will be used in the Sketch's draw function.
+     * @param setup Optional function containing any required setup for the sketch.
      * @returns A Sketch class.
      */
-    static createSketch(drawFunction: void => void): Object {
+    static createSketch(drawFunction: void => void, setup?: void => void): Object {
         return class extends Sketch<{}> {
             draw() {
                 drawFunction();
+            }
+
+            setup() {
+                setup !== undefined && setup();
             }
         };
     }
