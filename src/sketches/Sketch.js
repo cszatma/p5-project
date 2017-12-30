@@ -1,7 +1,5 @@
 // @flow
 
-import {setup} from "./Snake";
-
 export default class Sketch<Args> {
     constructor() {
         // $FlowIgnore
