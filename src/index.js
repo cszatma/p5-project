@@ -8,10 +8,10 @@ import "styles/index.css";
 
 // Import Sketches
 import type Sketch from "sketches/Sketch";
-import { apocalypse, drawFunctionMonster, mouseMemory, squareRandomDragger, Snake } from "sketches/Sketches";
+import { apocalypse, functionMonster, mouseMemory, squareRandomDragger, Snake } from "sketches/Sketches";
 
 const backgroundColor = new Color(0, 100, 200);
-const sketch = apocalypse;
+const sketch = functionMonster;
 
 createSketch(backgroundColor, () => {
     sketch.setup();

@@ -1,27 +1,21 @@
-import { w } from "global/constants";
+import Sketch from "./Sketch";
+import { Arc, Color, Ellipse } from "graphics/Graphics";
 
-export default function drawFunctionMonster() {
-    function drawBody() {
-        w.fill(152, 234, 175);
-        w.ellipse(200, 200, 300, 300);
-    }
+const body = Ellipse.init(200, 200, 300, 300, new Color(152, 234, 175));
+const mouth = Arc.init(200, 250, 100, 100, 0, Math.PI, Color.red());
+const eyes = [createEye(150, 50), createEye(250, 50)];
 
-    function drawMouth() {
-        w.fill(255, 0, 0);
-        w.arc(200, 250, 100, 100, 0, Math.PI);
-    }
+const FunctionMonster = Sketch.createSketch(() => {
+    body.draw();
+    mouth.draw();
+    eyes.forEach(eye => eye.forEach(part => part.draw()));
+});
 
-    function drawEye(x: number, y: number) {
-        w.fill(255);
-        w.ellipse(x, y, 80, 80);
-        w.fill(0);
-        w.ellipse(x, y, 20, 20);
-    }
+export default new FunctionMonster();
 
-    (() => {
-        drawBody();
-        drawMouth();
-        drawEye(150, 50);
-        drawEye(250, 50);
-    })();
+function createEye(x: number, y: number): [Ellipse, Ellipse] {
+    return [
+        Ellipse.init(x, y, 80, 80, Color.white()),
+        Ellipse.init(x, y, 20, 20, Color.black())
+    ];
 }
