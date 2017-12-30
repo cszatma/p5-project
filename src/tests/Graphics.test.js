@@ -53,4 +53,19 @@ describe("Test all Graphics classes", () => {
         it("should be true that (38, 18) isWithinBounds", () =>
             expect(ellipse.isWithinBounds(new G.Point(38, 18))).toBe(true));
     });
+
+    describe("Arc(70, 90, 30, 75, 0, 3π/4", () => {
+        let arc;
+
+        beforeEach(() =>
+            arc = G.Arc.init(70, 90, 30, 75, 0, (3 * Math.PI) / 4));
+
+        it("should be true that (67, 122) isWithinBounds", () => {
+            expect(arc.isWithinBounds(new G.Point(67, 122))).toBe(true);
+        });
+
+        it("should be false that (60, 91) isWithinBounds", () => {
+            expect(arc.isWithinBounds(new G.Point(60, 91))).toBe(false);
+        });
+    });
 });
