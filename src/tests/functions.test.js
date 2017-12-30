@@ -17,4 +17,7 @@ describe("Test all global functions", () => {
 
     test("scaling [3, 5] by 3 should return [9, 15]", () =>
         expect(fn.scaleBinaryTuple([3, 5], 3)).toEqual([9, 15]));
+
+    test("3^2 + 4^2 = 5^2", () =>
+        expect(fn.pythagoreanTheorem(3, 4)).toBe(5));
 });

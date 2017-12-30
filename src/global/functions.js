@@ -47,4 +47,8 @@ function scaleBinaryTuple(tuple: [number, number], scalar: number): [number, num
     return [tuple[0] * scalar, tuple[1] * scalar];
 }
 
-export { randomInt, isWithinRange, checkBoundary, isOutOfBounds, directionMatrix, addBinaryTuples, scaleBinaryTuple };
+function pythagoreanTheorem(a: number, b: number): number {
+    return Math.sqrt(a ** 2 + b ** 2);
+}
+
+export { randomInt, isWithinRange, checkBoundary, isOutOfBounds, directionMatrix, addBinaryTuples, scaleBinaryTuple, pythagoreanTheorem };
