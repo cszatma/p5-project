@@ -1,21 +1,16 @@
-const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-const resolve = path.resolve, join = path.join;
-
-const rootDir = resolve(__dirname);
-const srcDir = join(rootDir, "src");
-const buildDir = join(rootDir, "build");
+const paths = require('./paths');
 
 module.exports = {
-    entry: join(srcDir, "index.js"),
+    entry: paths.indexJS,
     module: {
         rules: [
             {
                 test: /\.js$/,
-                include: srcDir,
+                include: [paths.src, paths.config],
                 exclude: /(node_modules|bower_components)/,
                 use: {
                     loader: "babel-loader",
@@ -26,7 +21,7 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                include: srcDir,
+                include: paths.src,
                 use: ExtractTextPlugin.extract({
                     fallback: {
                         loader: require.resolve('style-loader'),
@@ -48,11 +43,11 @@ module.exports = {
         ]
     },
     output: {
-        path: buildDir,
+        path: paths.build,
         filename: "index.bundle.js"
     },
     devServer: {
-        contentBase: buildDir
+        contentBase: paths.build,
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -74,6 +69,6 @@ module.exports = {
         new ExtractTextPlugin("index.css")
     ],
     resolve: {
-        modules: ["node_modules", srcDir],
+        modules: ["node_modules", paths.src],
     },
 };
