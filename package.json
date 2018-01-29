@@ -22,8 +22,8 @@
     "p5": "^0.6.0"
   },
   "scripts": {
-    "start": "webpack-dev-server",
-    "build": "webpack",
+    "start": "webpack-dev-server --config config/webpack.config.js",
+    "build": "webpack --config config/webpack.config.js",
     "serve": "http-server ./build -p 8000",
     "test": "jest"
   }
