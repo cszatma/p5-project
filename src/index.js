@@ -7,11 +7,11 @@ import "global/extensions";
 import "styles/index.css";
 
 // Import Sketches
-import type Sketch from "sketches/Sketch";
+import Sketch from "sketches/Sketch";
 import * as Sketches from "sketches/Sketches";
 
 const backgroundColor = new Color(0, 100, 200);
-const sketch = Sketches.snake;
+const sketch = Sketches.algaeGrowth;
 
 createCanvas(backgroundColor, () => {
     sketch.setup();
